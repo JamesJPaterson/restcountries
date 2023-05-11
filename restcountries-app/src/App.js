@@ -10,7 +10,14 @@ function App() {
     fetch(`https://restcountries.com/v3.1/name/${query}`)
       .then(response => response.json())
       .then(data => {
-        // handle the response data
+        // handles the response data
+        const countries = data.map(country => ({
+          name: country.name.common,
+          population: country.population
+          //Initial search for name and population
+        }));
+        console.log(countries); // To see if there's any issues and to initially see if it's working without having to show it
+        
       })
   }
 
@@ -19,10 +26,11 @@ function App() {
       <form onSubmit={handleSubmit}>
         <input type="text" value={query} onChange={e => setQuery(e.target.value)} />
         <button type="submit">Search</button>
+        {/* Added a search bar form with a button */}
       </form>
     </div>
   );
-  
+
 }
 
 export default App;
