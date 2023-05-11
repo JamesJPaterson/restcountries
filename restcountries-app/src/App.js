@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 function App() {
   const [query, setQuery] = useState("");
   const [response, setResponse] = useState(null);
+  const [showDetails, setShowDetails] = useState(false);
 
 
   const handleSubmit = (event) => {
@@ -15,6 +16,10 @@ function App() {
         setResponse(data);
       })
       // removed excess and returned data
+  }
+
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
   }
   
   return (
@@ -40,6 +45,18 @@ function App() {
         <p>Languages: {Object.values(country.languages).join(", ")}</p>
         <p>Currency: {Object.values(country.currencies)[0].name}</p>
         <img src={country.flags.png} alt="Flag of {country.name.common}" />
+        <div style={{display: 'flex', flexDirection: 'column'}}>
+        <button onClick={toggleDetails}>Additional Information</button>
+              {showDetails && (
+                <div className="country-details">
+                  <p>Subregion: {country.subregion}</p>
+                  <p>Timezone(s): {country.timezones}</p>
+                  <p>Area: {country.area} km²</p>
+                  <p>Borders: {country.borders}</p>
+                </div>
+              )}
+          </div>
+
       </div>
     ))}
   </div>
