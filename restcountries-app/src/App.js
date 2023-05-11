@@ -46,6 +46,7 @@ function App() {
         <p>Currency: {Object.values(country.currencies)[0].name}</p>
         <img src={country.flags.png} alt="Flag of {country.name.common}" />
         <div style={{display: 'flex', flexDirection: 'column'}}>
+        {/* Here I made another button to show additional infor as I had some spare time */}
         <button onClick={toggleDetails}>Additional Information</button>
               {showDetails && (
                 <div className="country-details">
