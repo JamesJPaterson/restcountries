@@ -31,11 +31,15 @@ function App() {
       {response && (
   <div>
     {response.map(country => (
+      // here we call on the data we got and we name it country and call each individual bit of information
       <div key={country.name.common} className="country">
         <h2>{country.name.common}</h2>
         <p>Capital: {country.capital}</p>
         <p>Region: {country.region}</p>
-        <p>Population: {country.population}</p>
+        <p>Population: {country.population.toLocaleString()}</p>
+        <p>Languages: {Object.values(country.languages).join(", ")}</p>
+        <p>Currency: {Object.values(country.currencies)[0].name}</p>
+        <img src={country.flags.png} alt="Flag of {country.name.common}" />
       </div>
     ))}
   </div>
