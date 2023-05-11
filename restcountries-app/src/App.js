@@ -32,6 +32,17 @@ function App() {
       <button type="submit">Search</button>
       {/* Added a search bar form with a button */}
     </form>
+
+    {response && (
+        <div>
+          {response.map(country => (
+            <div key={country.name}>
+              <h2>{country.name}</h2>
+              <p>Population: {country.population}</p>
+            </div>
+          ))}
+        </div>
+      )}
   </div>   
   )
 
